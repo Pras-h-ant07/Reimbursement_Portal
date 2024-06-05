@@ -1,0 +1,60 @@
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+</head>
+<div class="card" style="background-color: #adb5bd00;">
+    <div class="card-header bg-dark mt-2"
+        style="border-top:5px;border-bottom: 5px;border-color:black;border-style:solid;">
+        <div class="row">
+            <div class="col-10">
+                <h2 class="font-weight-bold text-white ml-1">Admin Portal</h2>
+            </div>
+            <div class="col-2">
+                <button class="btn btn-danger float-right" type="button" (click)="logout()">LogOut</button>
+            </div>
+            <div class="col-9 mt-2" style="margin-left: 60%;">
+                <button routerLink="/Admin/pending-claim" class="btn btn-outline-success mr-2" type="button">Pending
+                    Requests</button>
+                <button routerLink="/Admin/approved-claim" class="btn btn-warning mr-2" type="button">Approved
+                    Requests</button>
+                <button routerLink="/Admin/declined-claim" class="btn btn-outline-success mr-2" type="button">Declined
+                    Requests</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-body mt-1 pt-0" style="background-color: #adb5bd00;">
+        <h4 class="font-weight mt-1 text-center">Approved Reimbursements</h4>
+        <table class="table table-hover">
+            <thead class="table bg-info">
+                <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Requested By</th>
+                <th scope="col">Reimbursement Type</th>
+                <th scope="col">Requested Value</th>
+                <th scope="col">Currency</th>
+                </tr>
+            </thead>
+            <tbody *ngFor='let Reimbursement of service.adminReimbursement'>
+
+                <tr>
+                    <td>
+                        {{ Reimbursement.date}}
+                    </td>
+                    <td>
+                        {{ Reimbursement.requestedBy }}
+                    </td>
+                    <td>
+                        {{ Reimbursement.reimbursementType }}
+                    </td>
+                    <td>
+                        {{ Reimbursement.requestedValue }}
+                    </td>
+                    <td>
+                        {{ Reimbursement.currency }}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

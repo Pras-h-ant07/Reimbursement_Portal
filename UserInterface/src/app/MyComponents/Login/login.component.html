@@ -1,0 +1,62 @@
+<body style="background-color: #adb5bd00;">
+  <div class="container mb-5">
+    <div class="row">
+      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div class="card border-dark card-signin my-2" style="border-style:solid;
+        border-width: 5px;">
+          <br>
+          <img src="assets/logo.jpg" width="80px" height="80px" style="margin-left: 41%;">
+          <br>
+          <div class="card-body">
+            <div class="text-center">
+              <h4 class="card-title text-left text-white" style="background-color: black;">LOGIN</h4>
+            </div>
+            <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+              <div class="row">
+                <div class="col-12">
+
+                  <div class="form-group">
+                    <label class="col-form-label" for="Email">Email</label>
+                    <input type="email" class="form-control" required [(ngModel)]='Employee.email' name="Email"
+                      #email="ngModel" placeholder="Enter email" id="email">
+                  </div>
+
+                  <div class="alert alert-danger alert-info my-1"
+                    *ngIf="email.invalid && (email.dirty || email.touched)">
+                    *email is required !!
+                  </div>
+
+                </div>
+
+                <div class="col-12">
+                  <div class="form-group">
+                    <label class="col-form-label" for="Password">Password</label>
+                    <input type="password" required minlength="8" placeholder="Enter password"
+                      pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$" class="form-control"
+                      id="password" name="password" [(ngModel)]='Employee.password' #password="ngModel">
+                    <div class="alert alert-danger alert-info my-2"
+                      *ngIf="password.invalid && (password.dirty ||password.touched)">
+                      *minimum length 8<br>
+                      *password must be alpha-numeric<br>
+                      *1 special character required !!
+                    </div>
+                  </div>
+                </div>
+
+                <div class="alert alert-danger my-2 mx-auto " *ngIf="InvalidAttempt">
+                  Credentials doesn't match !!
+                </div>
+              </div>
+              <div class="d-grid gap-2 mt-3">
+                <button type="submit" class="btn btn-success btn-block" [disabled]="!form.valid">Sign In</button>
+                <button routerLink="/Employee/sign-up" class="btn btn-success btn-block mt-2"
+                  type="button">Register</button>
+              </div>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
